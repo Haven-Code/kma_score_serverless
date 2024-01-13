@@ -15,7 +15,9 @@
     "db:push": "prisma db push",
     "db:migrate-deploy": "prisma migrate deploy",
     "prepare": "husky install",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "proto:gen": "protoc --plugin=node_modules/ts-proto/protoc-gen-ts_proto --ts_proto_out=./proto --ts_proto_opt=outputServices=grpc-js --ts_proto_opt=esModuleInterop=true --proto_path=./proto proto/*.proto",
+    "proto:gen-win": "protoc --plugin=protoc-gen-ts_proto=.\\node_modules\\.bin\\protoc-gen-ts_proto.cmd --ts_proto_out=./proto --proto_path=./proto --ts_proto_opt=outputServices=grpc-js --ts_proto_opt=esModuleInterop=true proto/*.proto"
   },
   "prisma": {
     "schema": "prisma/schema.prisma"
@@ -38,6 +40,7 @@
     "prettier": "3.0.0",
     "prisma": "^5.3.3",
     "sst": "^2.38.7",
+    "ts-proto": "^1.166.2",
     "typescript": "^5.0.4"
   },
   "workspaces": [

@@ -2,6 +2,7 @@ import Container from 'typedi';
 import { Cradle } from './cradle';
 import { CalculateScoreService } from '@infra/score';
 import { StudentRepository } from '@infra/student';
+import { ScheduleService } from '@infra/schedule';
 
 export const container: Cradle = {
   // Services
@@ -9,4 +10,5 @@ export const container: Cradle = {
 
   // Repositories
   studentRepository: Container.get(StudentRepository),
+  scheduleService: Container.get(ScheduleService),
 };

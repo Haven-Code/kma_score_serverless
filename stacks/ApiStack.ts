@@ -11,6 +11,7 @@ export function API(stackContext: StackContext) {
       function: {
         environment: {
           DB_URL: process.env.DB_URL ?? '',
+          SCHEDULE_PROTO_URL: process.env.SCHEDULE_PROTO_URL ?? '',
         },
         runtime: 'nodejs18.x',
         nodejs: {
@@ -27,6 +28,11 @@ export function API(stackContext: StackContext) {
     routes: {
       'GET /student/{id}':
         'packages/functions/src/student/getAllStudentWithScore.handler',
+      'GET /': 'packages/functions/src/root/helloWorld.handler',
+      'GET /schedule/semester':
+        'packages/functions/src/schedule/getSemester.handler',
+      'POST /schedule/{studentCode}':
+        'packages/functions/src/schedule/getStudentSchedule.handler',
     },
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
